@@ -40,10 +40,10 @@ The full UI is built in Streamlit with sidebar navigation, forms, tables and int
 ## 📁 Project Structure
 
 bank-app/ <br>
-  &ensp; ├─ app.py <br>
-  ├─ data.json        # optional, can be created at runtime
-  ├─ requirements.txt
-  └─ README.md
+  &ensp;├─ app.py <br>
+  &ensp;├─ data.json        # optional, can be created at runtime <br>
+  &ensp;├─ requirements.txt <br>
+  &ensp;└─ README.md <br>
 
 ---
 
