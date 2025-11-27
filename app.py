@@ -365,7 +365,7 @@ elif menu == "Delete Account":
                 st.error(str(e))
 
 
-# --------- List All Accounts + FILTER SEARCH (NEW) --------- #
+# --------- List All Accounts + SEARCH BY NAME/EMAIL ONLY --------- #
 elif menu == "List All Accounts":
     st.header("All Accounts")
 
@@ -374,41 +374,24 @@ elif menu == "List All Accounts":
     if not accounts:
         st.info("No accounts found.")
     else:
-        st.subheader("Search / Filter")
+        st.subheader("Search")
 
-        col1, col2 = st.columns(2)
-        with col1:
-            query = st.text_input("Search by name or email (optional)")
-        with col2:
-            st.caption("Balance Range (optional)")
-            min_balance = st.number_input("Min Balance", min_value=0, step=1, value=0)
-            max_balance = st.number_input("Max Balance (0 = no upper limit)", min_value=0, step=1, value=0)
+        query = st.text_input("Search by name or email (optional)")
 
-        # Apply filters
+        # Apply search filter
         filtered = accounts
-
         if query.strip():
             q = query.strip().lower()
             filtered = [
-                acc for acc in filtered
+                acc for acc in accounts
                 if q in acc.get("name", "").lower()
                 or q in acc.get("email", "").lower()
             ]
 
-        if min_balance > 0:
-            filtered = [acc for acc in filtered if acc.get("balance", 0) >= min_balance]
-
-        if max_balance > 0:
-            # if max_balance is set (non-zero)
-            if max_balance < min_balance and min_balance > 0:
-                st.warning("Max Balance is less than Min Balance. No results will match.")
-                filtered = []
-            else:
-                filtered = [acc for acc in filtered if acc.get("balance", 0) <= max_balance]
-
         st.subheader("Results")
 
         if not filtered:
-            st.info("No accounts match the current filters.")
+            st.info("No accounts match the current search.")
         else:
+            st.write(f"Showing **{len(filtered)}** account(s).")
             st.table(filtered)
