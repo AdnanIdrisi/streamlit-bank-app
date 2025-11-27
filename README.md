@@ -51,7 +51,7 @@ bank-app/ <br>
 
 ### **Clone the repository**
 ```bash
-git clone https://github.com/<your-username>/streamlit-bank-app.git
+git clone https://github.com/AdnanIdrisi/streamlit-bank-app.git
 cd streamlit-bank-app
 pip install -r requirements.txt
 streamlit run app.py
