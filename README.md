@@ -56,3 +56,9 @@ cd streamlit-bank-app
 pip install -r requirements.txt
 streamlit run app.py
 ```
+
+---
+
+## Live Demo
+
+### Check out live preview :- https://bank-app-adnanidrisi.streamlit.app/
